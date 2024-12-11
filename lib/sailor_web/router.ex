@@ -18,6 +18,8 @@ defmodule SailorWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live "/beat", BeatLive
+    # live "/posts", PostLive.Index
   end
 
   # Other scopes may use custom stacks.
