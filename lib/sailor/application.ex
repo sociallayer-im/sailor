@@ -17,7 +17,8 @@ defmodule Sailor.Application do
       # Start a worker by calling: Sailor.Worker.start_link(arg)
       # {Sailor.Worker, arg},
       # Start to serve requests, typically the last entry
-      SailorWeb.Endpoint
+      SailorWeb.Endpoint,
+      TwMerge.Cache
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -5,6 +5,7 @@ defmodule SailorWeb.BeatLive do
     ~H"""
     Current value: {@value}°F
     <button phx-click="inc_value">+</button>
+    <.button phx-click="inc_value">Click me</.button>
     """
   end
 
