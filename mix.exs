@@ -58,7 +58,8 @@ defmodule Sailor.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
-      {:salad_ui, "~> 0.14"}
+      {:salad_ui, "~> 0.14"},
+      {:live_svelte, "~> 0.14.1"}
     ]
   end
 
@@ -70,7 +71,14 @@ defmodule Sailor.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"],
+      # setup: ["deps.get", "ecto.setup", "cmd --cd assets npm install"],
+      setup: [
+        "deps.get",
+        "ecto.setup",
+        "assets.setup",
+        "assets.build",
+        "cmd --cd assets npm install"
+      ],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
@@ -79,6 +87,7 @@ defmodule Sailor.MixProject do
       "assets.deploy": [
         "tailwind sailor --minify",
         "esbuild sailor --minify",
+        "cmd --cd assets node build.js --deploy",
         "phx.digest"
       ]
     ]

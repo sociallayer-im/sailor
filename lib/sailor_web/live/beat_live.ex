@@ -3,14 +3,14 @@ defmodule SailorWeb.BeatLive do
 
   def render(assigns) do
     ~H"""
-    Current value: {@value}°F
-    <button phx-click="inc_value">+</button>
+    Current value: {@value}°F <button phx-click="inc_value">+</button>
     <.button phx-click="inc_value">Click me</.button>
     """
   end
 
   def mount(_params, _session, socket) do
-    value = 70 # Let's assume a fixed value for now
+    # Let's assume a fixed value for now
+    value = 70
     {:ok, assign(socket, :value, value)}
   end
 

@@ -9,7 +9,8 @@ module.exports = {
   content: [
     "./js/**/*.js",
     "../lib/sailor_web.ex",
-    "../lib/sailor_web/**/*.*ex"
+    "../lib/sailor_web/**/*.*ex",
+    "./svelte/**/*.svelte"
   ],
   theme: {
     extend: {

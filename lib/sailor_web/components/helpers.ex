@@ -11,7 +11,10 @@ defmodule SailorWeb.ComponentHelpers do
     assigns
     |> assign(field: nil, id: assigns[:id] || field.id)
     |> assign(:errors, Enum.map(field.errors, &translate_error(&1)))
-    |> assign(:name, assigns[:name] || if(assigns[:multiple], do: field.name <> "[]", else: field.name))
+    |> assign(
+      :name,
+      assigns[:name] || if(assigns[:multiple], do: field.name <> "[]", else: field.name)
+    )
     |> assign(:value, assigns[:value] || field.value)
     |> prepare_assign()
   end
@@ -82,7 +85,9 @@ defmodule SailorWeb.ComponentHelpers do
 
   @spec side_variant(String.t(), String.t()) :: String.t()
   def side_variant(side, align \\ "center") do
-    Enum.map_join(%{side: side, align: align(align, side)}, " ", fn {key, value} -> @variants[key][value] end)
+    Enum.map_join(%{side: side, align: align(align, side)}, " ", fn {key, value} ->
+      @variants[key][value]
+    end)
   end
 
   # decide align class based on side
@@ -99,8 +104,10 @@ defmodule SailorWeb.ComponentHelpers do
   @variants %{
     variant: %{
       "default" => "bg-primary text-primary-foreground shadow hover:bg-primary/90",
-      "destructive" => "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-      "outline" => "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+      "destructive" =>
+        "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+      "outline" =>
+        "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
       "secondary" => "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
       "ghost" => "hover:bg-accent hover:text-accent-foreground",
       "link" => "text-primary underline-offset-4 hover:underline"
